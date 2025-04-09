@@ -5,8 +5,8 @@ pp "=========================================="
 pp "Will you need an umbrella today?"
 pp "=========================================="
 pp "Where are you today?"
-# user_location = gets.chomp
-user_location = "Gleacher Center, Chicago"
+user_location = gets.chomp
+#user_location = "Gleacher Center, Chicago"
 pp user_location
 env_fetch_gmaps = ENV.fetch("GMAPS_KEY")
 google_api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{user_location}&key=#{env_fetch_gmaps}"
@@ -19,7 +19,7 @@ pp lat
 pp lng
 env_fetch_pirate = ENV.fetch("PIRATE_WEATHER_KEY")
 pirate_api_url = "https://api.pirateweather.net/forecast/#{env_fetch_pirate}/#{lat},#{lng}"
-pp pirate_api_url
+# pp pirate_api_url
 resp_pirate = HTTP.get(pirate_api_url)
 raw_pirate = resp_pirate.to_s
 parsed_pirate = JSON.parse(raw_pirate)

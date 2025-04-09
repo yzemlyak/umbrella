@@ -10,8 +10,10 @@ user_location = "Gleacher Center, Chicago"
 pp user_location
 env_fetch = ENV.fetch("GMAPS_KEY")
 google_api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{user_location}&key=#{env_fetch}"
-pp google_api_url
 resp = HTTP.get(google_api_url)
 raw_body = resp.to_s
 parsed_body = JSON.parse(raw_body)
-pp c = parsed_body.fetch("location")
+lat = parsed_body.fetch("results").at(0).fetch("geometry").fetch("location").fetch("lat")
+lng = parsed_body.fetch("results").at(0).fetch("geometry").fetch("location").fetch("lng")
+pp lat
+pp lng
